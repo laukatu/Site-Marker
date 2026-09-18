@@ -1,0 +1,182 @@
+{
+    "appName": {
+        "message": "Site Marker"
+    },
+    "appDescription": {
+        "message": "Affiche un badge visible sur les sites de votre choix (dev, staging, production…) pour ne jamais confondre les environnements."
+    },
+    "actionTitle": {
+        "message": "Site Marker : marquer ce site"
+    },
+    "optionsTitle": {
+        "message": "Gérer les marqueurs"
+    },
+    "optionsIntro": {
+        "message": "Ajoutez les sites à signaler et l'apparence du badge. À l'enregistrement, Chrome vous demandera d'autoriser Site Marker uniquement sur ces sites."
+    },
+    "markersHeading": {
+        "message": "Marqueurs"
+    },
+    "addMarker": {
+        "message": "+ Ajouter un marqueur"
+    },
+    "noMarkers": {
+        "message": "Aucun marqueur pour l'instant. Ajoutez-en un ci-dessous."
+    },
+    "save": {
+        "message": "Enregistrer"
+    },
+    "saved": {
+        "message": "Marqueurs enregistrés."
+    },
+    "remove": {
+        "message": "Supprimer"
+    },
+    "targetLabel": {
+        "message": "Site"
+    },
+    "targetPlaceholder": {
+        "message": "dev.exemple.fr"
+    },
+    "targetHint": {
+        "message": "Nom d'hôte, avec port et chemin facultatifs. Utilisez *. pour les sous-domaines : localhost:3000, *.exemple.fr, exemple.fr/wp-admin"
+    },
+    "labelLabel": {
+        "message": "Libellé"
+    },
+    "labelPlaceholder": {
+        "message": "DEV"
+    },
+    "colorLabel": {
+        "message": "Couleur"
+    },
+    "presetsLabel": {
+        "message": "Préréglages"
+    },
+    "positionLabel": {
+        "message": "Position"
+    },
+    "pos_top_left": {
+        "message": "En haut à gauche"
+    },
+    "pos_top_right": {
+        "message": "En haut à droite"
+    },
+    "pos_bottom_left": {
+        "message": "En bas à gauche"
+    },
+    "pos_bottom_right": {
+        "message": "En bas à droite"
+    },
+    "sizeLabel": {
+        "message": "Taille"
+    },
+    "size_small": {
+        "message": "Petite"
+    },
+    "size_medium": {
+        "message": "Moyenne"
+    },
+    "size_large": {
+        "message": "Grande"
+    },
+    "frameLabel": {
+        "message": "Cadre autour de la page"
+    },
+    "notAllowed": {
+        "message": "⚠︎ pas encore autorisé"
+    },
+    "notAllowedHint": {
+        "message": "Site Marker ne peut pas encore s'exécuter sur ce site. Cliquez sur Enregistrer pour autoriser l'accès."
+    },
+    "settingsHeading": {
+        "message": "Paramètres"
+    },
+    "showInTitle": {
+        "message": "Préfixer le titre de l'onglet avec le libellé, ex. [DEV] Ma page"
+    },
+    "showOnIcon": {
+        "message": "Afficher le libellé sur l'icône de la barre d'outils"
+    },
+    "dataHeading": {
+        "message": "Importer et exporter"
+    },
+    "exportButton": {
+        "message": "Exporter en JSON"
+    },
+    "importButton": {
+        "message": "Importer un JSON"
+    },
+    "importHint": {
+        "message": "Partagez le JSON avec votre équipe. Les marqueurs importés sont fusionnés à la liste ; cliquez sur Enregistrer pour les appliquer."
+    },
+    "imported": {
+        "message": "$1 marqueur(s) importé(s). Cliquez sur Enregistrer pour appliquer."
+    },
+    "importError": {
+        "message": "Le fichier n'est pas un export Site Marker valide."
+    },
+    "savedNoPermission": {
+        "message": "Enregistré, mais l'accès aux sites n'a pas été accordé. Cliquez à nouveau sur Enregistrer pour l'autoriser."
+    },
+    "registerError": {
+        "message": "Enregistré, mais le badge n'a pas pu être enregistré : $1"
+    },
+    "saveError": {
+        "message": "Impossible d'enregistrer : $1"
+    },
+    "invalidTarget": {
+        "message": "« $1 » n'est pas un site valide."
+    },
+    "missingLabel": {
+        "message": "Libellé manquant pour $1."
+    },
+    "duplicateTarget": {
+        "message": "$1 apparaît plusieurs fois."
+    },
+    "popupCurrent": {
+        "message": "Site actuel"
+    },
+    "popupMarkedAs": {
+        "message": "Ce site est marqué comme"
+    },
+    "popupMarkButton": {
+        "message": "Marquer ce site"
+    },
+    "popupIncludeSubdomains": {
+        "message": "Inclure tous les sous-domaines"
+    },
+    "popupSuggested": {
+        "message": "Suggéré d'après le nom d'hôte : $1"
+    },
+    "popupManage": {
+        "message": "Gérer tous les marqueurs"
+    },
+    "popupUnsupported": {
+        "message": "Site Marker ne fonctionne que sur les pages http et https."
+    },
+    "popupPermissionDenied": {
+        "message": "Enregistré, mais Chrome n'a pas accordé l'accès à ce site. Ouvrez les options et cliquez sur Enregistrer pour l'autoriser."
+    },
+    "preset_local": {
+        "message": "LOCAL"
+    },
+    "preset_dev": {
+        "message": "DEV"
+    },
+    "preset_test": {
+        "message": "TEST"
+    },
+    "preset_staging": {
+        "message": "STAGING"
+    },
+    "preset_pre": {
+        "message": "PRÉPROD"
+    },
+    "preset_prod": {
+        "message": "PROD"
+    },
+    "madeBy": {
+        "message": "Fait avec 💛 par"
+    }
+}

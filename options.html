@@ -1,27 +1,90 @@
 <!DOCTYPE html>
 <html>
-    <head><title>Manage markers</title></head>
-    <style>
-        body { background: #f3f0f0; }
-        h1 { border-bottom: 1px #888 solid; padding-bottom:5px }
-        #wrapper { background: #fff; width:50%; margin:0 auto; padding: 25px 60px; }
-        #author_wraper { width:50%; margin: 5px auto; text-align: center; }
-        #actions_wraper {background: #fff; width:50%; margin:0 auto; padding: 25px 60px; text-align: center; }
-        #status {color: darkgreen}
-        .hostname { width: 40%; margin: 0 10px !important }
-        .label { width: 20%; margin: 0 10px !important }
-    </style>
-    <body>
-        <div id="wrapper">
-            <h1>Manage website markers</h1>
-        </div>
-        <div id="actions_wraper">
-            <button id="save">Save</button>
-            <span id="status"></span>
-        </div>
-        <div id="author_wraper">
-            <small>Made with &#128155; by <a href="https://laukatu.com/" target="_blank">Laukatu</a>.</small>
-        </div>
-        <script src="options.js"></script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="optionsTitle"></title>
+    <link rel="stylesheet" href="ui.css">
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1 data-i18n="optionsTitle"></h1>
+            <p class="hint" data-i18n="optionsIntro"></p>
+        </header>
+
+        <form id="markers-form" novalidate>
+            <h2 data-i18n="markersHeading"></h2>
+            <div id="markers" class="markers"></div>
+            <div class="row-actions">
+                <button type="button" id="add" data-i18n="addMarker"></button>
+            </div>
+
+            <h2 data-i18n="settingsHeading"></h2>
+            <label class="check"><input type="checkbox" id="showInTitle"> <span data-i18n="showInTitle"></span></label>
+            <label class="check"><input type="checkbox" id="showOnIcon"> <span data-i18n="showOnIcon"></span></label>
+
+            <div class="actions">
+                <button type="submit" id="save" class="primary" data-i18n="save"></button>
+                <span id="status" class="status" role="status" aria-live="polite"></span>
+            </div>
+        </form>
+
+        <section class="data">
+            <h2 data-i18n="dataHeading"></h2>
+            <p class="hint" data-i18n="importHint"></p>
+            <div class="row-actions">
+                <button type="button" id="export" data-i18n="exportButton"></button>
+                <button type="button" id="import" data-i18n="importButton"></button>
+                <input type="file" id="import-file" accept="application/json,.json" hidden>
+            </div>
+        </section>
+
+        <template id="card-template">
+            <div class="card">
+                <div class="card-grid">
+                    <label class="field target-field">
+                        <span data-i18n="targetLabel"></span>
+                        <input type="text" class="target" autocomplete="off" spellcheck="false" data-i18n-placeholder="targetPlaceholder">
+                    </label>
+                    <label class="field label-field">
+                        <span data-i18n="labelLabel"></span>
+                        <input type="text" class="label" autocomplete="off" maxlength="40" data-i18n-placeholder="labelPlaceholder">
+                    </label>
+                    <div class="field color-field">
+                        <span data-i18n="colorLabel"></span>
+                        <div class="color-row">
+                            <input type="color" class="color">
+                            <div class="presets"></div>
+                        </div>
+                    </div>
+                    <label class="field">
+                        <span data-i18n="positionLabel"></span>
+                        <select class="position"></select>
+                    </label>
+                    <label class="field">
+                        <span data-i18n="sizeLabel"></span>
+                        <select class="size"></select>
+                    </label>
+                    <label class="check frame-field">
+                        <input type="checkbox" class="frame">
+                        <span data-i18n="frameLabel"></span>
+                    </label>
+                </div>
+                <div class="card-foot">
+                    <span class="permission" data-i18n="notAllowed" data-i18n-title="notAllowedHint" hidden></span>
+                    <button type="button" class="del" data-i18n="remove"></button>
+                </div>
+            </div>
+        </template>
+    </main>
+
+    <footer class="author">
+        <small><span data-i18n="madeBy"></span> <a href="https://laukatu.com/" target="_blank" rel="noopener">Laukatu</a>.</small>
+    </footer>
+
+    <script src="common.js"></script>
+    <script src="options.js"></script>
+</body>
 </html>

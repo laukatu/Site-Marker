@@ -1,0 +1,182 @@
+{
+    "appName": {
+        "message": "Site Marker"
+    },
+    "appDescription": {
+        "message": "Shows a visible badge on the sites you choose (dev, staging, production…) so you never confuse environments."
+    },
+    "actionTitle": {
+        "message": "Site Marker: mark this site"
+    },
+    "optionsTitle": {
+        "message": "Manage markers"
+    },
+    "optionsIntro": {
+        "message": "Add the sites you want to flag and how the badge should look. When you save, Chrome asks you to allow Site Marker on those sites only."
+    },
+    "markersHeading": {
+        "message": "Markers"
+    },
+    "addMarker": {
+        "message": "+ Add marker"
+    },
+    "noMarkers": {
+        "message": "No markers yet. Add one below."
+    },
+    "save": {
+        "message": "Save"
+    },
+    "saved": {
+        "message": "Markers saved."
+    },
+    "remove": {
+        "message": "Remove"
+    },
+    "targetLabel": {
+        "message": "Site"
+    },
+    "targetPlaceholder": {
+        "message": "dev.example.com"
+    },
+    "targetHint": {
+        "message": "Hostname, optionally with port and path. Use *. for subdomains: localhost:3000, *.example.com, example.com/wp-admin"
+    },
+    "labelLabel": {
+        "message": "Label"
+    },
+    "labelPlaceholder": {
+        "message": "DEV"
+    },
+    "colorLabel": {
+        "message": "Color"
+    },
+    "presetsLabel": {
+        "message": "Presets"
+    },
+    "positionLabel": {
+        "message": "Position"
+    },
+    "pos_top_left": {
+        "message": "Top left"
+    },
+    "pos_top_right": {
+        "message": "Top right"
+    },
+    "pos_bottom_left": {
+        "message": "Bottom left"
+    },
+    "pos_bottom_right": {
+        "message": "Bottom right"
+    },
+    "sizeLabel": {
+        "message": "Size"
+    },
+    "size_small": {
+        "message": "Small"
+    },
+    "size_medium": {
+        "message": "Medium"
+    },
+    "size_large": {
+        "message": "Large"
+    },
+    "frameLabel": {
+        "message": "Frame around the page"
+    },
+    "notAllowed": {
+        "message": "⚠︎ not allowed yet"
+    },
+    "notAllowedHint": {
+        "message": "Site Marker cannot run on this site yet. Press Save to grant access."
+    },
+    "settingsHeading": {
+        "message": "Settings"
+    },
+    "showInTitle": {
+        "message": "Prefix the tab title with the label, e.g. [DEV] My page"
+    },
+    "showOnIcon": {
+        "message": "Show the label on the toolbar icon"
+    },
+    "dataHeading": {
+        "message": "Import and export"
+    },
+    "exportButton": {
+        "message": "Export JSON"
+    },
+    "importButton": {
+        "message": "Import JSON"
+    },
+    "importHint": {
+        "message": "Share the JSON with your team. Imported markers are merged into the list; press Save to apply them."
+    },
+    "imported": {
+        "message": "Imported $1 marker(s). Press Save to apply."
+    },
+    "importError": {
+        "message": "The file is not a valid Site Marker export."
+    },
+    "savedNoPermission": {
+        "message": "Saved, but access to the sites was not granted. Press Save again to allow it."
+    },
+    "registerError": {
+        "message": "Saved, but the badge could not be registered: $1"
+    },
+    "saveError": {
+        "message": "Could not save: $1"
+    },
+    "invalidTarget": {
+        "message": "\"$1\" is not a valid site."
+    },
+    "missingLabel": {
+        "message": "Missing label for $1."
+    },
+    "duplicateTarget": {
+        "message": "$1 appears more than once."
+    },
+    "popupCurrent": {
+        "message": "Current site"
+    },
+    "popupMarkedAs": {
+        "message": "This site is marked as"
+    },
+    "popupMarkButton": {
+        "message": "Mark this site"
+    },
+    "popupIncludeSubdomains": {
+        "message": "Include all subdomains"
+    },
+    "popupSuggested": {
+        "message": "Suggested from the hostname: $1"
+    },
+    "popupManage": {
+        "message": "Manage all markers"
+    },
+    "popupUnsupported": {
+        "message": "Site Marker only works on http and https pages."
+    },
+    "popupPermissionDenied": {
+        "message": "Saved, but Chrome did not grant access to this site. Open the options and press Save to allow it."
+    },
+    "preset_local": {
+        "message": "LOCAL"
+    },
+    "preset_dev": {
+        "message": "DEV"
+    },
+    "preset_test": {
+        "message": "TEST"
+    },
+    "preset_staging": {
+        "message": "STAGING"
+    },
+    "preset_pre": {
+        "message": "PRE"
+    },
+    "preset_prod": {
+        "message": "PROD"
+    },
+    "madeBy": {
+        "message": "Made with 💛 by"
+    }
+}

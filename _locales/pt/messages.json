@@ -1,0 +1,182 @@
+{
+    "appName": {
+        "message": "Site Marker"
+    },
+    "appDescription": {
+        "message": "Mostra um selo visível nos sites que escolher (dev, staging, produção…) para nunca confundir ambientes."
+    },
+    "actionTitle": {
+        "message": "Site Marker: marcar este site"
+    },
+    "optionsTitle": {
+        "message": "Gerir marcadores"
+    },
+    "optionsIntro": {
+        "message": "Adicione os sites que quer assinalar e o aspeto do selo. Ao guardar, o Chrome pedirá permissão para o Site Marker apenas nesses sites."
+    },
+    "markersHeading": {
+        "message": "Marcadores"
+    },
+    "addMarker": {
+        "message": "+ Adicionar marcador"
+    },
+    "noMarkers": {
+        "message": "Ainda não há marcadores. Adicione um abaixo."
+    },
+    "save": {
+        "message": "Guardar"
+    },
+    "saved": {
+        "message": "Marcadores guardados."
+    },
+    "remove": {
+        "message": "Remover"
+    },
+    "targetLabel": {
+        "message": "Site"
+    },
+    "targetPlaceholder": {
+        "message": "dev.exemplo.pt"
+    },
+    "targetHint": {
+        "message": "Hostname, opcionalmente com porta e caminho. Use *. para subdomínios: localhost:3000, *.exemplo.pt, exemplo.pt/wp-admin"
+    },
+    "labelLabel": {
+        "message": "Etiqueta"
+    },
+    "labelPlaceholder": {
+        "message": "DEV"
+    },
+    "colorLabel": {
+        "message": "Cor"
+    },
+    "presetsLabel": {
+        "message": "Predefinições"
+    },
+    "positionLabel": {
+        "message": "Posição"
+    },
+    "pos_top_left": {
+        "message": "Superior esquerdo"
+    },
+    "pos_top_right": {
+        "message": "Superior direito"
+    },
+    "pos_bottom_left": {
+        "message": "Inferior esquerdo"
+    },
+    "pos_bottom_right": {
+        "message": "Inferior direito"
+    },
+    "sizeLabel": {
+        "message": "Tamanho"
+    },
+    "size_small": {
+        "message": "Pequeno"
+    },
+    "size_medium": {
+        "message": "Médio"
+    },
+    "size_large": {
+        "message": "Grande"
+    },
+    "frameLabel": {
+        "message": "Moldura à volta da página"
+    },
+    "notAllowed": {
+        "message": "⚠︎ ainda sem permissão"
+    },
+    "notAllowedHint": {
+        "message": "O Site Marker ainda não pode correr neste site. Prima Guardar para conceder acesso."
+    },
+    "settingsHeading": {
+        "message": "Definições"
+    },
+    "showInTitle": {
+        "message": "Prefixar o título do separador com a etiqueta, p. ex. [DEV] A minha página"
+    },
+    "showOnIcon": {
+        "message": "Mostrar a etiqueta no ícone da barra"
+    },
+    "dataHeading": {
+        "message": "Importar e exportar"
+    },
+    "exportButton": {
+        "message": "Exportar JSON"
+    },
+    "importButton": {
+        "message": "Importar JSON"
+    },
+    "importHint": {
+        "message": "Partilhe o JSON com a sua equipa. Os marcadores importados são juntados à lista; prima Guardar para os aplicar."
+    },
+    "imported": {
+        "message": "Importado(s) $1 marcador(es). Prima Guardar para aplicar."
+    },
+    "importError": {
+        "message": "O ficheiro não é uma exportação válida do Site Marker."
+    },
+    "savedNoPermission": {
+        "message": "Guardado, mas o acesso aos sites não foi concedido. Prima Guardar novamente para o permitir."
+    },
+    "registerError": {
+        "message": "Guardado, mas não foi possível registar o selo: $1"
+    },
+    "saveError": {
+        "message": "Não foi possível guardar: $1"
+    },
+    "invalidTarget": {
+        "message": "\"$1\" não é um site válido."
+    },
+    "missingLabel": {
+        "message": "Falta a etiqueta de $1."
+    },
+    "duplicateTarget": {
+        "message": "$1 aparece mais do que uma vez."
+    },
+    "popupCurrent": {
+        "message": "Site atual"
+    },
+    "popupMarkedAs": {
+        "message": "Este site está marcado como"
+    },
+    "popupMarkButton": {
+        "message": "Marcar este site"
+    },
+    "popupIncludeSubdomains": {
+        "message": "Incluir todos os subdomínios"
+    },
+    "popupSuggested": {
+        "message": "Sugerido a partir do hostname: $1"
+    },
+    "popupManage": {
+        "message": "Gerir todos os marcadores"
+    },
+    "popupUnsupported": {
+        "message": "O Site Marker só funciona em páginas http e https."
+    },
+    "popupPermissionDenied": {
+        "message": "Guardado, mas o Chrome não concedeu acesso a este site. Abra as opções e prima Guardar para o permitir."
+    },
+    "preset_local": {
+        "message": "LOCAL"
+    },
+    "preset_dev": {
+        "message": "DEV"
+    },
+    "preset_test": {
+        "message": "TESTE"
+    },
+    "preset_staging": {
+        "message": "STAGING"
+    },
+    "preset_pre": {
+        "message": "PRE"
+    },
+    "preset_prod": {
+        "message": "PROD"
+    },
+    "madeBy": {
+        "message": "Feito com 💛 por"
+    }
+}
