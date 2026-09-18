@@ -1,27 +1,55 @@
 <!DOCTYPE html>
-<html>
-    <head><title>Manage markers</title></head>
-    <style>
-        body { background: #f3f0f0; }
-        h1 { border-bottom: 1px #888 solid; padding-bottom:5px }
-        #wrapper { background: #fff; width:50%; margin:0 auto; padding: 25px 60px; }
-        #author_wraper { width:50%; margin: 5px auto; text-align: center; }
-        #actions_wraper {background: #fff; width:50%; margin:0 auto; padding: 25px 60px; text-align: center; }
-        #status {color: darkgreen}
-        .hostname { width: 40%; margin: 0 10px !important }
-        .label { width: 20%; margin: 0 10px !important }
-    </style>
-    <body>
-        <div id="wrapper">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Site Marker – Manage markers</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <main class="container">
+        <header>
             <h1>Manage website markers</h1>
-        </div>
-        <div id="actions_wraper">
-            <button id="save">Save</button>
-            <span id="status"></span>
-        </div>
-        <div id="author_wraper">
-            <small>Made with &#128155; by <a href="https://laukatu.com/" target="_blank">Laukatu</a>.</small>
-        </div>
-        <script src="options.js"></script>
-    </body>
+            <p class="hint">
+                Add the hostnames you want to flag and the label to show on them.
+                When you save, Chrome will ask you to allow Site Marker on those sites only.
+            </p>
+        </header>
+
+        <form id="markers-form" novalidate>
+            <div id="rows" class="rows"></div>
+
+            <div class="row-actions">
+                <button type="button" id="add" class="secondary">+ Add marker</button>
+            </div>
+
+            <div class="actions">
+                <button type="submit" id="save" class="primary">Save</button>
+                <span id="status" role="status" aria-live="polite"></span>
+            </div>
+        </form>
+
+        <template id="row-template">
+            <div class="row">
+                <label class="field field-hostname">
+                    <span>Hostname</span>
+                    <input type="text" class="hostname" placeholder="dev.example.com" autocomplete="off" spellcheck="false">
+                </label>
+                <label class="field field-label">
+                    <span>Label</span>
+                    <input type="text" class="label" placeholder="DEV" autocomplete="off" maxlength="40">
+                </label>
+                <span class="permission" title="Site Marker is not allowed on this site yet. Press Save to grant access." hidden>⚠︎ not allowed</span>
+                <button type="button" class="del" aria-label="Remove marker">×</button>
+            </div>
+        </template>
+    </main>
+
+    <footer class="author">
+        <small>Made with &#128155; by <a href="https://laukatu.com/" target="_blank" rel="noopener">Laukatu</a>.</small>
+    </footer>
+
+    <script src="common.js"></script>
+    <script src="options.js"></script>
+</body>
 </html>

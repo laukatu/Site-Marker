@@ -1,19 +1,35 @@
-chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
-    if (changeInfo.status == 'complete') {
-        chrome.tabs.query({active: true, currentWindow: true}, tabs => {
-            if (tabs[0].url && tabs[0].url.indexOf('chrome://') === -1) {
-                let hostname = new URL(tabs[0].url).hostname;
+/**
+ * Service worker (Manifest V3).
+ *
+ * Its only job is to keep the dynamically registered badge content script in
+ * sync with the configured markers and the host permissions the user granted.
+ * Registered content scripts persist across browser sessions, so the worker
+ * does not need to stay alive while browsing.
+ */
 
-                chrome.storage.sync.get(hostname, function(result) {
-                    if (Object.keys(result).length !== 0) {
-                        chrome.tabs.executeScript(tabs[0].id, {
-                            code: 'var label = ' + JSON.stringify(result[hostname])
-                        }, function() {
-                            chrome.tabs.executeScript(tabs[0].id, {file: 'badge.js'});
-                        });
-                    }
-                });
-            }
-        });
+importScripts('common.js');
+
+let syncQueue = Promise.resolve();
+
+function scheduleSync() {
+    syncQueue = syncQueue
+        .then(syncContentScripts)
+        .catch(error => console.error('[Site Marker] Could not sync content scripts:', error));
+    return syncQueue;
+}
+
+chrome.runtime.onInstalled.addListener(scheduleSync);
+chrome.runtime.onStartup.addListener(scheduleSync);
+
+chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName === 'sync') {
+        scheduleSync();
     }
-})
+});
+
+chrome.permissions.onAdded.addListener(scheduleSync);
+chrome.permissions.onRemoved.addListener(scheduleSync);
+
+chrome.action.onClicked.addListener(() => {
+    chrome.runtime.openOptionsPage();
+});
