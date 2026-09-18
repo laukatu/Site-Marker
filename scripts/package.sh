@@ -11,14 +11,18 @@ OUT="$OUT_DIR/site-marker-$VERSION.zip"
 mkdir -p "$OUT_DIR"
 rm -f "$OUT"
 
-zip -q -X "$OUT" \
+zip -q -X -r "$OUT" \
     manifest.json \
     background.js \
     common.js \
     badge.js \
+    ui.css \
     options.html \
     options.css \
     options.js \
+    popup.html \
+    popup.js \
+    _locales \
     images/logo16.png \
     images/logo32.png \
     images/logo48.png \

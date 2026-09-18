@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title data-i18n="appName"></title>
+    <link rel="stylesheet" href="ui.css">
+    <style>
+        body { width: 320px; padding: 14px 16px 12px; }
+        header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-weight: 600; }
+        header img { width: 20px; height: 20px; }
+        .site { font-weight: 600; word-break: break-all; margin: 0 0 10px; }
+        form { display: flex; flex-direction: column; gap: 10px; }
+        .row { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+        .inline { display: flex; align-items: center; gap: 8px; }
+        .suggested { margin: 0; font-size: 12px; color: var(--muted); }
+        #status { margin: 0; }
+        .manage { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/logo32.png" alt="">
+        <span data-i18n="appName"></span>
+    </header>
+
+    <section id="view-unsupported" hidden>
+        <p class="muted" data-i18n="popupUnsupported"></p>
+    </section>
+
+    <section id="view-marked" hidden>
+        <p class="muted" data-i18n="popupCurrent"></p>
+        <p class="site" id="marked-site"></p>
+        <p class="muted" data-i18n="popupMarkedAs"></p>
+        <span class="chip" id="marked-chip"></span>
+        <div class="row">
+            <button type="button" id="remove" data-i18n="remove"></button>
+        </div>
+    </section>
+
+    <section id="view-form" hidden>
+        <form id="mark-form" novalidate>
+            <label class="field">
+                <span data-i18n="popupCurrent"></span>
+                <input type="text" id="target" autocomplete="off" spellcheck="false">
+            </label>
+            <label class="check" id="wildcard-wrap">
+                <input type="checkbox" id="wildcard">
+                <span data-i18n="popupIncludeSubdomains"></span>
+            </label>
+            <label class="field">
+                <span data-i18n="labelLabel"></span>
+                <input type="text" id="label" autocomplete="off" maxlength="40" data-i18n-placeholder="labelPlaceholder">
+            </label>
+            <div class="field">
+                <span data-i18n="presetsLabel"></span>
+                <div class="presets" id="presets"></div>
+            </div>
+            <label class="inline">
+                <span class="muted" data-i18n="colorLabel"></span>
+                <input type="color" id="color">
+            </label>
+            <p class="suggested" id="suggested" hidden></p>
+            <button type="submit" id="mark" class="primary" data-i18n="popupMarkButton"></button>
+            <p id="status" class="status" role="status"></p>
+        </form>
+    </section>
+
+    <div class="manage">
+        <button type="button" id="manage" class="link" data-i18n="popupManage"></button>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>

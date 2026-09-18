@@ -1,0 +1,182 @@
+{
+    "appName": {
+        "message": "Site Marker"
+    },
+    "appDescription": {
+        "message": "Zeigt ein sichtbares Badge auf den von dir gewählten Seiten (Dev, Staging, Produktion …), damit du Umgebungen nie verwechselst."
+    },
+    "actionTitle": {
+        "message": "Site Marker: diese Seite markieren"
+    },
+    "optionsTitle": {
+        "message": "Markierungen verwalten"
+    },
+    "optionsIntro": {
+        "message": "Füge die Seiten hinzu, die du kennzeichnen willst, und lege das Aussehen des Badges fest. Beim Speichern fragt Chrome nur für diese Seiten nach der Berechtigung."
+    },
+    "markersHeading": {
+        "message": "Markierungen"
+    },
+    "addMarker": {
+        "message": "+ Markierung hinzufügen"
+    },
+    "noMarkers": {
+        "message": "Noch keine Markierungen. Füge unten eine hinzu."
+    },
+    "save": {
+        "message": "Speichern"
+    },
+    "saved": {
+        "message": "Markierungen gespeichert."
+    },
+    "remove": {
+        "message": "Entfernen"
+    },
+    "targetLabel": {
+        "message": "Seite"
+    },
+    "targetPlaceholder": {
+        "message": "dev.beispiel.de"
+    },
+    "targetHint": {
+        "message": "Hostname, optional mit Port und Pfad. *. steht für Subdomains: localhost:3000, *.beispiel.de, beispiel.de/wp-admin"
+    },
+    "labelLabel": {
+        "message": "Beschriftung"
+    },
+    "labelPlaceholder": {
+        "message": "DEV"
+    },
+    "colorLabel": {
+        "message": "Farbe"
+    },
+    "presetsLabel": {
+        "message": "Vorlagen"
+    },
+    "positionLabel": {
+        "message": "Position"
+    },
+    "pos_top_left": {
+        "message": "Oben links"
+    },
+    "pos_top_right": {
+        "message": "Oben rechts"
+    },
+    "pos_bottom_left": {
+        "message": "Unten links"
+    },
+    "pos_bottom_right": {
+        "message": "Unten rechts"
+    },
+    "sizeLabel": {
+        "message": "Größe"
+    },
+    "size_small": {
+        "message": "Klein"
+    },
+    "size_medium": {
+        "message": "Mittel"
+    },
+    "size_large": {
+        "message": "Groß"
+    },
+    "frameLabel": {
+        "message": "Rahmen um die Seite"
+    },
+    "notAllowed": {
+        "message": "⚠︎ noch nicht erlaubt"
+    },
+    "notAllowedHint": {
+        "message": "Site Marker darf auf dieser Seite noch nicht laufen. Klicke auf Speichern, um den Zugriff zu erlauben."
+    },
+    "settingsHeading": {
+        "message": "Einstellungen"
+    },
+    "showInTitle": {
+        "message": "Tab-Titel mit der Beschriftung versehen, z. B. [DEV] Meine Seite"
+    },
+    "showOnIcon": {
+        "message": "Beschriftung auf dem Symbol in der Symbolleiste anzeigen"
+    },
+    "dataHeading": {
+        "message": "Importieren und Exportieren"
+    },
+    "exportButton": {
+        "message": "JSON exportieren"
+    },
+    "importButton": {
+        "message": "JSON importieren"
+    },
+    "importHint": {
+        "message": "Teile das JSON mit deinem Team. Importierte Markierungen werden in die Liste übernommen; klicke auf Speichern, um sie anzuwenden."
+    },
+    "imported": {
+        "message": "$1 Markierung(en) importiert. Klicke auf Speichern, um sie anzuwenden."
+    },
+    "importError": {
+        "message": "Die Datei ist kein gültiger Site-Marker-Export."
+    },
+    "savedNoPermission": {
+        "message": "Gespeichert, aber der Zugriff auf die Seiten wurde nicht erlaubt. Klicke erneut auf Speichern, um ihn zu erlauben."
+    },
+    "registerError": {
+        "message": "Gespeichert, aber das Badge konnte nicht registriert werden: $1"
+    },
+    "saveError": {
+        "message": "Speichern nicht möglich: $1"
+    },
+    "invalidTarget": {
+        "message": "„$1“ ist keine gültige Seite."
+    },
+    "missingLabel": {
+        "message": "Beschriftung für $1 fehlt."
+    },
+    "duplicateTarget": {
+        "message": "$1 kommt mehrmals vor."
+    },
+    "popupCurrent": {
+        "message": "Aktuelle Seite"
+    },
+    "popupMarkedAs": {
+        "message": "Diese Seite ist markiert als"
+    },
+    "popupMarkButton": {
+        "message": "Diese Seite markieren"
+    },
+    "popupIncludeSubdomains": {
+        "message": "Alle Subdomains einschließen"
+    },
+    "popupSuggested": {
+        "message": "Vorschlag anhand des Hostnamens: $1"
+    },
+    "popupManage": {
+        "message": "Alle Markierungen verwalten"
+    },
+    "popupUnsupported": {
+        "message": "Site Marker funktioniert nur auf http- und https-Seiten."
+    },
+    "popupPermissionDenied": {
+        "message": "Gespeichert, aber Chrome hat den Zugriff auf diese Seite nicht erlaubt. Öffne die Einstellungen und klicke auf Speichern."
+    },
+    "preset_local": {
+        "message": "LOKAL"
+    },
+    "preset_dev": {
+        "message": "DEV"
+    },
+    "preset_test": {
+        "message": "TEST"
+    },
+    "preset_staging": {
+        "message": "STAGING"
+    },
+    "preset_pre": {
+        "message": "PRE"
+    },
+    "preset_prod": {
+        "message": "PROD"
+    },
+    "madeBy": {
+        "message": "Mit 💛 gemacht von"
+    }
+}

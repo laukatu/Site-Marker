@@ -1,0 +1,182 @@
+{
+    "appName": {
+        "message": "Site Marker"
+    },
+    "appDescription": {
+        "message": "Mostra un badge visibile sui siti che scegli (dev, staging, produzione…) per non confondere mai gli ambienti."
+    },
+    "actionTitle": {
+        "message": "Site Marker: contrassegna questo sito"
+    },
+    "optionsTitle": {
+        "message": "Gestisci contrassegni"
+    },
+    "optionsIntro": {
+        "message": "Aggiungi i siti da segnalare e l'aspetto del badge. Al salvataggio Chrome chiederà di autorizzare Site Marker solo su quei siti."
+    },
+    "markersHeading": {
+        "message": "Contrassegni"
+    },
+    "addMarker": {
+        "message": "+ Aggiungi contrassegno"
+    },
+    "noMarkers": {
+        "message": "Nessun contrassegno. Aggiungine uno qui sotto."
+    },
+    "save": {
+        "message": "Salva"
+    },
+    "saved": {
+        "message": "Contrassegni salvati."
+    },
+    "remove": {
+        "message": "Rimuovi"
+    },
+    "targetLabel": {
+        "message": "Sito"
+    },
+    "targetPlaceholder": {
+        "message": "dev.esempio.it"
+    },
+    "targetHint": {
+        "message": "Hostname, con porta e percorso facoltativi. Usa *. per i sottodomini: localhost:3000, *.esempio.it, esempio.it/wp-admin"
+    },
+    "labelLabel": {
+        "message": "Etichetta"
+    },
+    "labelPlaceholder": {
+        "message": "DEV"
+    },
+    "colorLabel": {
+        "message": "Colore"
+    },
+    "presetsLabel": {
+        "message": "Predefiniti"
+    },
+    "positionLabel": {
+        "message": "Posizione"
+    },
+    "pos_top_left": {
+        "message": "In alto a sinistra"
+    },
+    "pos_top_right": {
+        "message": "In alto a destra"
+    },
+    "pos_bottom_left": {
+        "message": "In basso a sinistra"
+    },
+    "pos_bottom_right": {
+        "message": "In basso a destra"
+    },
+    "sizeLabel": {
+        "message": "Dimensione"
+    },
+    "size_small": {
+        "message": "Piccolo"
+    },
+    "size_medium": {
+        "message": "Medio"
+    },
+    "size_large": {
+        "message": "Grande"
+    },
+    "frameLabel": {
+        "message": "Cornice attorno alla pagina"
+    },
+    "notAllowed": {
+        "message": "⚠︎ non ancora autorizzato"
+    },
+    "notAllowedHint": {
+        "message": "Site Marker non può ancora funzionare su questo sito. Premi Salva per concedere l'accesso."
+    },
+    "settingsHeading": {
+        "message": "Impostazioni"
+    },
+    "showInTitle": {
+        "message": "Aggiungi l'etichetta al titolo della scheda, es. [DEV] La mia pagina"
+    },
+    "showOnIcon": {
+        "message": "Mostra l'etichetta sull'icona della barra"
+    },
+    "dataHeading": {
+        "message": "Importa ed esporta"
+    },
+    "exportButton": {
+        "message": "Esporta JSON"
+    },
+    "importButton": {
+        "message": "Importa JSON"
+    },
+    "importHint": {
+        "message": "Condividi il JSON con il tuo team. I contrassegni importati vengono uniti alla lista; premi Salva per applicarli."
+    },
+    "imported": {
+        "message": "Importati $1 contrassegni. Premi Salva per applicare."
+    },
+    "importError": {
+        "message": "Il file non è un'esportazione valida di Site Marker."
+    },
+    "savedNoPermission": {
+        "message": "Salvato, ma l'accesso ai siti non è stato concesso. Premi di nuovo Salva per consentirlo."
+    },
+    "registerError": {
+        "message": "Salvato, ma non è stato possibile registrare il badge: $1"
+    },
+    "saveError": {
+        "message": "Impossibile salvare: $1"
+    },
+    "invalidTarget": {
+        "message": "\"$1\" non è un sito valido."
+    },
+    "missingLabel": {
+        "message": "Manca l'etichetta per $1."
+    },
+    "duplicateTarget": {
+        "message": "$1 compare più di una volta."
+    },
+    "popupCurrent": {
+        "message": "Sito attuale"
+    },
+    "popupMarkedAs": {
+        "message": "Questo sito è contrassegnato come"
+    },
+    "popupMarkButton": {
+        "message": "Contrassegna questo sito"
+    },
+    "popupIncludeSubdomains": {
+        "message": "Includi tutti i sottodomini"
+    },
+    "popupSuggested": {
+        "message": "Suggerito dall'hostname: $1"
+    },
+    "popupManage": {
+        "message": "Gestisci tutti i contrassegni"
+    },
+    "popupUnsupported": {
+        "message": "Site Marker funziona solo su pagine http e https."
+    },
+    "popupPermissionDenied": {
+        "message": "Salvato, ma Chrome non ha concesso l'accesso a questo sito. Apri le opzioni e premi Salva per consentirlo."
+    },
+    "preset_local": {
+        "message": "LOCALE"
+    },
+    "preset_dev": {
+        "message": "DEV"
+    },
+    "preset_test": {
+        "message": "TEST"
+    },
+    "preset_staging": {
+        "message": "STAGING"
+    },
+    "preset_pre": {
+        "message": "PRE"
+    },
+    "preset_prod": {
+        "message": "PROD"
+    },
+    "madeBy": {
+        "message": "Fatto con 💛 da"
+    }
+}

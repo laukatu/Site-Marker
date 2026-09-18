@@ -1,203 +1,317 @@
 /**
  * Options page. Depends on common.js (loaded first).
  */
+(() => {
+    const S = SiteMarker;
+    S.localizeDocument();
 
-const rowsContainer = document.getElementById('rows');
-const rowTemplate = document.getElementById('row-template');
-const form = document.getElementById('markers-form');
-const statusEl = document.getElementById('status');
+    const listEl = document.getElementById('markers');
+    const template = document.getElementById('card-template');
+    const form = document.getElementById('markers-form');
+    const statusEl = document.getElementById('status');
+    const showInTitleEl = document.getElementById('showInTitle');
+    const showOnIconEl = document.getElementById('showOnIcon');
+    const importFileEl = document.getElementById('import-file');
 
-let statusTimer = null;
+    let statusTimer = null;
 
-function setStatus(message, type = '', timeout = 3000) {
-    clearTimeout(statusTimer);
-    statusEl.textContent = message;
-    statusEl.className = type;
-
-    if (timeout > 0 && message) {
-        statusTimer = setTimeout(() => {
-            statusEl.textContent = '';
-            statusEl.className = '';
-        }, timeout);
-    }
-}
-
-function addRow(hostname = '', label = '', focus = false) {
-    const fragment = rowTemplate.content.cloneNode(true);
-    const row = fragment.querySelector('.row');
-    const hostnameInput = row.querySelector('.hostname');
-    const labelInput = row.querySelector('.label');
-
-    hostnameInput.value = hostname;
-    labelInput.value = label;
-
-    row.querySelector('.del').addEventListener('click', () => {
-        row.remove();
-        renderEmptyState();
-    });
-
-    rowsContainer.appendChild(fragment);
-    renderEmptyState();
-
-    if (focus) {
-        hostnameInput.focus();
+    function setStatus(message, type = '', timeout = 3000) {
+        clearTimeout(statusTimer);
+        statusEl.textContent = message;
+        statusEl.className = 'status ' + type;
+        if (timeout > 0 && message) {
+            statusTimer = setTimeout(() => {
+                statusEl.textContent = '';
+                statusEl.className = 'status';
+            }, timeout);
+        }
     }
 
-    return row;
-}
-
-function renderEmptyState() {
-    const existing = rowsContainer.querySelector('.empty');
-    const hasRows = rowsContainer.querySelector('.row') !== null;
-
-    if (!hasRows && !existing) {
-        const empty = document.createElement('p');
-        empty.className = 'empty';
-        empty.textContent = 'No markers yet. Add one below.';
-        rowsContainer.appendChild(empty);
-    } else if (hasRows && existing) {
-        existing.remove();
-    }
-}
-
-/**
- * Reads the form synchronously (so that the later permission request still
- * happens inside the user gesture). Returns { markers, errors }.
- */
-function readRows() {
-    const markers = {};
-    const errors = [];
-
-    for (const row of rowsContainer.querySelectorAll('.row')) {
-        const hostnameInput = row.querySelector('.hostname');
-        const labelInput = row.querySelector('.label');
-        const rawHostname = hostnameInput.value.trim();
-        const label = labelInput.value.trim();
-
-        hostnameInput.classList.remove('invalid');
-        labelInput.classList.remove('invalid');
-
-        // Completely empty rows are ignored.
-        if (rawHostname === '' && label === '') {
-            continue;
+    function fillSelect(select, values, prefix) {
+        for (const value of values) {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = S.t(prefix + value.replace(/-/g, '_'));
+            select.appendChild(option);
         }
-
-        const hostname = normalizeHostname(rawHostname);
-
-        if (hostname === null) {
-            hostnameInput.classList.add('invalid');
-            errors.push('"' + rawHostname + '" is not a valid hostname.');
-            continue;
-        }
-
-        if (label === '') {
-            labelInput.classList.add('invalid');
-            errors.push('Missing label for ' + hostname + '.');
-            continue;
-        }
-
-        hostnameInput.value = hostname;
-        labelInput.value = label;
-        markers[hostname] = label;
     }
 
-    return { markers, errors };
-}
-
-async function refreshPermissionBadges() {
-    for (const row of rowsContainer.querySelectorAll('.row')) {
-        const hostname = normalizeHostname(row.querySelector('.hostname').value);
-        const badge = row.querySelector('.permission');
-
-        if (hostname === null) {
-            badge.hidden = true;
-            continue;
+    function renderPresets(container, colorInput, labelInput) {
+        for (const preset of S.PRESETS) {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'preset';
+            button.title = S.presetLabel(preset);
+            button.style.background = preset.color + '22';
+            button.style.borderColor = preset.color;
+            const dot = document.createElement('span');
+            dot.className = 'dot';
+            dot.style.background = preset.color;
+            button.appendChild(dot);
+            button.appendChild(document.createTextNode(S.presetLabel(preset)));
+            button.addEventListener('click', () => {
+                colorInput.value = preset.color;
+                if (labelInput.value.trim() === '') {
+                    labelInput.value = S.presetLabel(preset);
+                }
+            });
+            container.appendChild(button);
         }
+    }
 
-        const allowed = await chrome.permissions.contains({
-            origins: [hostnameToMatchPattern(hostname)]
+    function renderEmptyState() {
+        const existing = listEl.querySelector('.empty');
+        const hasCards = listEl.querySelector('.card') !== null;
+        if (!hasCards && !existing) {
+            const empty = document.createElement('p');
+            empty.className = 'empty';
+            empty.textContent = S.t('noMarkers');
+            listEl.appendChild(empty);
+        } else if (hasCards && existing) {
+            existing.remove();
+        }
+    }
+
+    function addCard(marker = null, focus = false) {
+        const fragment = template.content.cloneNode(true);
+        const card = fragment.querySelector('.card');
+        S.localizeDocument(card);
+
+        const targetInput = card.querySelector('.target');
+        const labelInput = card.querySelector('.label');
+        const colorInput = card.querySelector('.color');
+        const positionSelect = card.querySelector('.position');
+        const sizeSelect = card.querySelector('.size');
+        const frameInput = card.querySelector('.frame');
+
+        fillSelect(positionSelect, S.POSITIONS, 'pos_');
+        fillSelect(sizeSelect, S.SIZES, 'size_');
+        renderPresets(card.querySelector('.presets'), colorInput, labelInput);
+
+        card.dataset.id = marker ? marker.id : S.newId();
+        targetInput.value = marker ? S.targetToString(marker) : '';
+        labelInput.value = marker ? marker.label : '';
+        colorInput.value = marker ? marker.color : S.DEFAULT_COLOR;
+        positionSelect.value = marker ? marker.position : S.POSITIONS[0];
+        sizeSelect.value = marker ? marker.size : 'medium';
+        frameInput.checked = marker ? marker.frame : false;
+
+        card.querySelector('.del').addEventListener('click', () => {
+            card.remove();
+            renderEmptyState();
         });
-        badge.hidden = allowed;
-    }
-}
 
-async function saveMarkers(event) {
-    event.preventDefault();
+        listEl.appendChild(fragment);
+        renderEmptyState();
 
-    const { markers, errors } = readRows();
-
-    if (errors.length > 0) {
-        setStatus(errors[0], 'error', 6000);
-        return;
+        if (focus) {
+            targetInput.focus();
+        }
+        return card;
     }
 
-    const hostnames = Object.keys(markers);
-    const origins = hostnames.map(hostnameToMatchPattern);
+    function updateCard(card, marker) {
+        card.querySelector('.label').value = marker.label;
+        card.querySelector('.color').value = marker.color;
+        card.querySelector('.position').value = marker.position;
+        card.querySelector('.size').value = marker.size;
+        card.querySelector('.frame').checked = marker.frame;
+    }
 
-    // Must be the first async call: permissions.request() needs the user gesture.
-    let granted = true;
-    if (origins.length > 0) {
+    /** Reads the cards synchronously. Returns { markers, errors }. */
+    function readCards() {
+        const markers = [];
+        const errors = [];
+        const seen = new Set();
+
+        for (const card of listEl.querySelectorAll('.card')) {
+            const targetInput = card.querySelector('.target');
+            const labelInput = card.querySelector('.label');
+            const rawTarget = targetInput.value.trim();
+            const label = labelInput.value.trim();
+
+            targetInput.classList.remove('invalid');
+            labelInput.classList.remove('invalid');
+
+            if (rawTarget === '' && label === '') {
+                continue;
+            }
+
+            const target = S.parseTarget(rawTarget);
+            if (!target) {
+                targetInput.classList.add('invalid');
+                errors.push(S.t('invalidTarget', [rawTarget]));
+                continue;
+            }
+
+            const targetString = S.targetToString(target);
+            targetInput.value = targetString;
+
+            if (label === '') {
+                labelInput.classList.add('invalid');
+                errors.push(S.t('missingLabel', [targetString]));
+                continue;
+            }
+
+            if (seen.has(targetString)) {
+                targetInput.classList.add('invalid');
+                errors.push(S.t('duplicateTarget', [targetString]));
+                continue;
+            }
+            seen.add(targetString);
+
+            markers.push(Object.assign({
+                id: card.dataset.id,
+                label: label,
+                color: card.querySelector('.color').value,
+                position: card.querySelector('.position').value,
+                size: card.querySelector('.size').value,
+                frame: card.querySelector('.frame').checked
+            }, target));
+        }
+
+        return { markers, errors };
+    }
+
+    async function refreshPermissionBadges() {
+        for (const card of listEl.querySelectorAll('.card')) {
+            const target = S.parseTarget(card.querySelector('.target').value);
+            const badge = card.querySelector('.permission');
+            badge.hidden = !target || await S.hasOriginPermission(S.originPattern(target));
+        }
+    }
+
+    async function save(event) {
+        event.preventDefault();
+
+        const { markers, errors } = readCards();
+        if (errors.length > 0) {
+            setStatus(errors[0], 'error', 6000);
+            return;
+        }
+
+        const origins = Array.from(new Set(markers.map(S.originPattern)));
+
+        // First await: permissions.request() must run inside the user gesture.
+        let granted = true;
+        if (origins.length > 0) {
+            try {
+                granted = await chrome.permissions.request({ origins });
+            } catch (error) {
+                console.error('[Site Marker] Permission request failed:', error);
+                granted = false;
+            }
+        }
+
         try {
-            granted = await chrome.permissions.request({ origins });
+            await S.replaceMarkers(markers);
+            await S.saveSettings({
+                showInTitle: showInTitleEl.checked,
+                showOnIcon: showOnIconEl.checked
+            });
         } catch (error) {
-            console.error('[Site Marker] Permission request failed:', error);
-            granted = false;
+            setStatus(S.t('saveError', [error.message]), 'error', 8000);
+            return;
         }
-    }
 
-    // Persist markers without wiping unrelated keys unnecessarily.
-    const current = await chrome.storage.sync.get(null);
-    const stale = Object.keys(current).filter(key => !(key in markers));
-
-    if (stale.length > 0) {
-        await chrome.storage.sync.remove(stale);
-    }
-    if (hostnames.length > 0) {
-        await chrome.storage.sync.set(markers);
-    }
-
-    // Drop host permissions that are no longer needed (least privilege).
-    try {
-        const all = await chrome.permissions.getAll();
-        const unused = (all.origins || []).filter(origin => !origins.includes(origin));
-        if (unused.length > 0) {
-            await chrome.permissions.remove({ origins: unused });
+        // Drop host permissions that are no longer needed (least privilege).
+        try {
+            const all = await chrome.permissions.getAll();
+            const unused = (all.origins || []).filter(origin => !origins.includes(origin));
+            if (unused.length > 0) {
+                await chrome.permissions.remove({ origins: unused });
+            }
+        } catch (error) {
+            console.warn('[Site Marker] Could not revoke unused permissions:', error);
         }
-    } catch (error) {
-        console.warn('[Site Marker] Could not revoke unused permissions:', error);
-    }
 
-    // The service worker also syncs on storage/permission changes; doing it
-    // here too gives immediate feedback if something goes wrong.
-    try {
-        await syncContentScripts();
-    } catch (error) {
-        console.error('[Site Marker] Could not register content script:', error);
-        setStatus('Markers saved, but the badge could not be registered: ' + error.message, 'error', 8000);
+        try {
+            await S.syncContentScripts();
+        } catch (error) {
+            console.error('[Site Marker] Could not register content script:', error);
+            setStatus(S.t('registerError', [error.message]), 'error', 8000);
+            await refreshPermissionBadges();
+            return;
+        }
+
         await refreshPermissionBadges();
-        return;
+        setStatus(granted ? S.t('saved') : S.t('savedNoPermission'), granted ? 'ok' : 'error', granted ? 3000 : 8000);
     }
 
-    await refreshPermissionBadges();
-
-    if (granted) {
-        setStatus('Markers saved.', 'ok');
-    } else {
-        setStatus('Markers saved, but access to the sites was not granted. Press Save again to allow it.', 'error', 8000);
-    }
-}
-
-async function restoreMarkers() {
-    const markers = await getMarkers();
-
-    for (const [hostname, label] of Object.entries(markers)) {
-        addRow(hostname, label);
+    async function exportMarkers() {
+        const [markers, settings] = await Promise.all([S.getMarkers(), S.getSettings()]);
+        const data = S.exportData(markers, settings);
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'site-marker-' + new Date().toISOString().slice(0, 10) + '.json';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
-    renderEmptyState();
-    await refreshPermissionBadges();
-}
+    async function importMarkers(file) {
+        let parsed;
+        try {
+            parsed = S.parseImport(await file.text());
+        } catch (error) {
+            setStatus(S.t('importError'), 'error', 6000);
+            return;
+        }
 
-document.getElementById('add').addEventListener('click', () => addRow('', '', true));
-form.addEventListener('submit', saveMarkers);
-document.addEventListener('DOMContentLoaded', restoreMarkers);
+        const cardsByTarget = new Map();
+        for (const card of listEl.querySelectorAll('.card')) {
+            const target = S.parseTarget(card.querySelector('.target').value);
+            if (target) {
+                cardsByTarget.set(S.targetToString(target), card);
+            }
+        }
+
+        for (const marker of parsed.markers) {
+            const key = S.targetToString(marker);
+            const existing = cardsByTarget.get(key);
+            if (existing) {
+                updateCard(existing, marker);
+            } else {
+                cardsByTarget.set(key, addCard(marker));
+            }
+        }
+
+        if (parsed.settings) {
+            if (parsed.settings.showInTitle !== undefined) showInTitleEl.checked = parsed.settings.showInTitle;
+            if (parsed.settings.showOnIcon !== undefined) showOnIconEl.checked = parsed.settings.showOnIcon;
+        }
+
+        await refreshPermissionBadges();
+        setStatus(S.t('imported', [String(parsed.markers.length)]), 'ok', 8000);
+    }
+
+    async function restore() {
+        await S.migrate().catch(error => console.error('[Site Marker] Migration failed:', error));
+        const [markers, settings] = await Promise.all([S.getMarkers(), S.getSettings()]);
+
+        for (const marker of markers) {
+            addCard(marker);
+        }
+        renderEmptyState();
+
+        showInTitleEl.checked = settings.showInTitle;
+        showOnIconEl.checked = settings.showOnIcon;
+
+        await refreshPermissionBadges();
+    }
+
+    document.getElementById('add').addEventListener('click', () => addCard(null, true));
+    document.getElementById('export').addEventListener('click', exportMarkers);
+    document.getElementById('import').addEventListener('click', () => importFileEl.click());
+    importFileEl.addEventListener('change', async () => {
+        if (importFileEl.files && importFileEl.files[0]) {
+            await importMarkers(importFileEl.files[0]);
+            importFileEl.value = '';
+        }
+    });
+    form.addEventListener('submit', save);
+    document.addEventListener('DOMContentLoaded', restore);
+})();

@@ -1,52 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Site Marker – Manage markers</title>
+    <title data-i18n="optionsTitle"></title>
+    <link rel="stylesheet" href="ui.css">
     <link rel="stylesheet" href="options.css">
 </head>
 <body>
     <main class="container">
         <header>
-            <h1>Manage website markers</h1>
-            <p class="hint">
-                Add the hostnames you want to flag and the label to show on them.
-                When you save, Chrome will ask you to allow Site Marker on those sites only.
-            </p>
+            <h1 data-i18n="optionsTitle"></h1>
+            <p class="hint" data-i18n="optionsIntro"></p>
         </header>
 
         <form id="markers-form" novalidate>
-            <div id="rows" class="rows"></div>
-
+            <h2 data-i18n="markersHeading"></h2>
+            <div id="markers" class="markers"></div>
             <div class="row-actions">
-                <button type="button" id="add" class="secondary">+ Add marker</button>
+                <button type="button" id="add" data-i18n="addMarker"></button>
             </div>
 
+            <h2 data-i18n="settingsHeading"></h2>
+            <label class="check"><input type="checkbox" id="showInTitle"> <span data-i18n="showInTitle"></span></label>
+            <label class="check"><input type="checkbox" id="showOnIcon"> <span data-i18n="showOnIcon"></span></label>
+
             <div class="actions">
-                <button type="submit" id="save" class="primary">Save</button>
-                <span id="status" role="status" aria-live="polite"></span>
+                <button type="submit" id="save" class="primary" data-i18n="save"></button>
+                <span id="status" class="status" role="status" aria-live="polite"></span>
             </div>
         </form>
 
-        <template id="row-template">
-            <div class="row">
-                <label class="field field-hostname">
-                    <span>Hostname</span>
-                    <input type="text" class="hostname" placeholder="dev.example.com" autocomplete="off" spellcheck="false">
-                </label>
-                <label class="field field-label">
-                    <span>Label</span>
-                    <input type="text" class="label" placeholder="DEV" autocomplete="off" maxlength="40">
-                </label>
-                <span class="permission" title="Site Marker is not allowed on this site yet. Press Save to grant access." hidden>⚠︎ not allowed</span>
-                <button type="button" class="del" aria-label="Remove marker">×</button>
+        <section class="data">
+            <h2 data-i18n="dataHeading"></h2>
+            <p class="hint" data-i18n="importHint"></p>
+            <div class="row-actions">
+                <button type="button" id="export" data-i18n="exportButton"></button>
+                <button type="button" id="import" data-i18n="importButton"></button>
+                <input type="file" id="import-file" accept="application/json,.json" hidden>
+            </div>
+        </section>
+
+        <template id="card-template">
+            <div class="card">
+                <div class="card-grid">
+                    <label class="field target-field">
+                        <span data-i18n="targetLabel"></span>
+                        <input type="text" class="target" autocomplete="off" spellcheck="false" data-i18n-placeholder="targetPlaceholder">
+                    </label>
+                    <label class="field label-field">
+                        <span data-i18n="labelLabel"></span>
+                        <input type="text" class="label" autocomplete="off" maxlength="40" data-i18n-placeholder="labelPlaceholder">
+                    </label>
+                    <div class="field color-field">
+                        <span data-i18n="colorLabel"></span>
+                        <div class="color-row">
+                            <input type="color" class="color">
+                            <div class="presets"></div>
+                        </div>
+                    </div>
+                    <label class="field">
+                        <span data-i18n="positionLabel"></span>
+                        <select class="position"></select>
+                    </label>
+                    <label class="field">
+                        <span data-i18n="sizeLabel"></span>
+                        <select class="size"></select>
+                    </label>
+                    <label class="check frame-field">
+                        <input type="checkbox" class="frame">
+                        <span data-i18n="frameLabel"></span>
+                    </label>
+                </div>
+                <div class="card-foot">
+                    <span class="permission" data-i18n="notAllowed" data-i18n-title="notAllowedHint" hidden></span>
+                    <button type="button" class="del" data-i18n="remove"></button>
+                </div>
             </div>
         </template>
     </main>
 
     <footer class="author">
-        <small>Made with &#128155; by <a href="https://laukatu.com/" target="_blank" rel="noopener">Laukatu</a>.</small>
+        <small><span data-i18n="madeBy"></span> <a href="https://laukatu.com/" target="_blank" rel="noopener">Laukatu</a>.</small>
     </footer>
 
     <script src="common.js"></script>

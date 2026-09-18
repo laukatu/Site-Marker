@@ -1,0 +1,182 @@
+{
+    "appName": {
+        "message": "Site Marker"
+    },
+    "appDescription": {
+        "message": "Mostra un distintiu visible als llocs que triïs (dev, staging, producció…) per no confondre entorns."
+    },
+    "actionTitle": {
+        "message": "Site Marker: marcar aquest lloc"
+    },
+    "optionsTitle": {
+        "message": "Gestionar marcadors"
+    },
+    "optionsIntro": {
+        "message": "Afegeix els llocs que vols distingir i com s'ha de veure el distintiu. En desar, Chrome et demanarà permís per a Site Marker només en aquests llocs."
+    },
+    "markersHeading": {
+        "message": "Marcadors"
+    },
+    "addMarker": {
+        "message": "+ Afegeix un marcador"
+    },
+    "noMarkers": {
+        "message": "Encara no hi ha marcadors. Afegeix-ne un a sota."
+    },
+    "save": {
+        "message": "Desa"
+    },
+    "saved": {
+        "message": "Marcadors desats."
+    },
+    "remove": {
+        "message": "Elimina"
+    },
+    "targetLabel": {
+        "message": "Lloc"
+    },
+    "targetPlaceholder": {
+        "message": "dev.exemple.cat"
+    },
+    "targetHint": {
+        "message": "Nom de host, opcionalment amb port i ruta. Fes servir *. per a subdominis: localhost:3000, *.exemple.cat, exemple.cat/wp-admin"
+    },
+    "labelLabel": {
+        "message": "Etiqueta"
+    },
+    "labelPlaceholder": {
+        "message": "DEV"
+    },
+    "colorLabel": {
+        "message": "Color"
+    },
+    "presetsLabel": {
+        "message": "Predefinits"
+    },
+    "positionLabel": {
+        "message": "Posició"
+    },
+    "pos_top_left": {
+        "message": "A dalt a l'esquerra"
+    },
+    "pos_top_right": {
+        "message": "A dalt a la dreta"
+    },
+    "pos_bottom_left": {
+        "message": "A baix a l'esquerra"
+    },
+    "pos_bottom_right": {
+        "message": "A baix a la dreta"
+    },
+    "sizeLabel": {
+        "message": "Mida"
+    },
+    "size_small": {
+        "message": "Petit"
+    },
+    "size_medium": {
+        "message": "Mitjà"
+    },
+    "size_large": {
+        "message": "Gran"
+    },
+    "frameLabel": {
+        "message": "Marc al voltant de la pàgina"
+    },
+    "notAllowed": {
+        "message": "⚠︎ encara sense permís"
+    },
+    "notAllowedHint": {
+        "message": "Site Marker encara no es pot executar en aquest lloc. Prem Desa per concedir accés."
+    },
+    "settingsHeading": {
+        "message": "Configuració"
+    },
+    "showInTitle": {
+        "message": "Afegeix l'etiqueta al títol de la pestanya, p. ex. [DEV] La meva pàgina"
+    },
+    "showOnIcon": {
+        "message": "Mostra l'etiqueta a la icona de la barra"
+    },
+    "dataHeading": {
+        "message": "Importa i exporta"
+    },
+    "exportButton": {
+        "message": "Exporta JSON"
+    },
+    "importButton": {
+        "message": "Importa JSON"
+    },
+    "importHint": {
+        "message": "Comparteix el JSON amb el teu equip. Els marcadors importats es fusionen amb la llista; prem Desa per aplicar-los."
+    },
+    "imported": {
+        "message": "S'han importat $1 marcador(s). Prem Desa per aplicar-los."
+    },
+    "importError": {
+        "message": "El fitxer no és una exportació vàlida de Site Marker."
+    },
+    "savedNoPermission": {
+        "message": "Desat, però no s'ha concedit accés als llocs. Prem Desa de nou per permetre-ho."
+    },
+    "registerError": {
+        "message": "Desat, però no s'ha pogut registrar el distintiu: $1"
+    },
+    "saveError": {
+        "message": "No s'ha pogut desar: $1"
+    },
+    "invalidTarget": {
+        "message": "\"$1\" no és un lloc vàlid."
+    },
+    "missingLabel": {
+        "message": "Falta l'etiqueta de $1."
+    },
+    "duplicateTarget": {
+        "message": "$1 apareix més d'una vegada."
+    },
+    "popupCurrent": {
+        "message": "Lloc actual"
+    },
+    "popupMarkedAs": {
+        "message": "Aquest lloc està marcat com a"
+    },
+    "popupMarkButton": {
+        "message": "Marca aquest lloc"
+    },
+    "popupIncludeSubdomains": {
+        "message": "Inclou tots els subdominis"
+    },
+    "popupSuggested": {
+        "message": "Suggerit a partir del nom de host: $1"
+    },
+    "popupManage": {
+        "message": "Gestiona tots els marcadors"
+    },
+    "popupUnsupported": {
+        "message": "Site Marker només funciona en pàgines http i https."
+    },
+    "popupPermissionDenied": {
+        "message": "Desat, però Chrome no ha concedit accés a aquest lloc. Obre les opcions i prem Desa per permetre-ho."
+    },
+    "preset_local": {
+        "message": "LOCAL"
+    },
+    "preset_dev": {
+        "message": "DEV"
+    },
+    "preset_test": {
+        "message": "TEST"
+    },
+    "preset_staging": {
+        "message": "STAGING"
+    },
+    "preset_pre": {
+        "message": "PRE"
+    },
+    "preset_prod": {
+        "message": "PROD"
+    },
+    "madeBy": {
+        "message": "Fet amb 💛 per"
+    }
+}
